@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            background-color: #1a1a1a; 
+            color: white; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-end; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            padding-bottom: 120px;
+            font-family: 'Helvetica Neue', Helvetica, sans-serif;
+            overflow: hidden;
+        }
+        .container { text-align: center; background: rgba(0,0,0,0.7); padding: 40px; width: 100%; border-top: 1px solid #444; }
+        .swedish { font-size: 100px; font-weight: bold; color: #f1c40f; margin: 0; }
+        .english { font-size: 50px; color: #bdc3c7; margin-top: 15px; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="sw" class="swedish">Hej!</div>
+        <div id="en" class="english">Hello!</div>
+    </div>
+    <script>
+        const vocabulary = [
+            {sw: "Och", en: "And"}, {sw: "I", en: "In"}, {sw: "En", en: "A/An"}, {sw: "Ett", en: "A/An (neuter)"},
+            {sw: "Som", en: "As/Like"}, {sw: "Att", en: "To"}, {sw: "För", en: "For"}, {sw: "På", en: "On"},
+            {sw: "Med", en: "With"}, {sw: "Han", en: "He"}, {sw: "Hon", en: "She"}, {sw: "Det", en: "It"},
+            {sw: "Vi", en: "We"}, {sw: "De", en: "They"}, {sw: "Var", en: "Was/Where"}, {sw: "Men", en: "But"},
+            {sw: "Här", en: "Here"}, {sw: "Där", en: "There"}, {sw: "Från", en: "From"}, {sw: "Till", en: "To"},
+            {sw: "Eller", en: "Or"}, {sw: "Om", en: "If/About"}, {sw: "När", en: "When"}, {sw: "Upp", en: "Up"},
+            {sw: "Ut", en: "Out"}, {sw: "In", en: "In"}, {sw: "Nu", en: "Now"}, {sw: "Bara", en: "Only"},
+            {sw: "Mycket", en: "Much/Very"}, {sw: "Bra", en: "Good"}, {sw: "Dålig", en: "Bad"}, {sw: "Gå", en: "Go"},
+            {sw: "Se", en: "See"}, {sw: "Säga", en: "Say"}, {sw: "Göra", en: "Do"}, {sw: "Få", en: "Get"},
+            {sw: "Komma", en: "Come"}, {sw: "Veta", en: "Know"}, {sw: "Tro", en: "Believe"}, {sw: "Tänka", en: "Think"},
+            {sw: "Hitta", en: "Find"}, {sw: "Ta", en: "Take"}, {sw: "Ge", en: "Give"}, {sw: "Visa", en: "Show"},
+            {sw: "Äta", en: "Eat"}, {sw: "Dricka", en: "Drink"}, {sw: "Sova", en: "Sleep"}, {sw: "Arbeta", en: "Work"},
+            {sw: "Skriva", en: "Write"}, {sw: "Läsa", en: "Read"}, {sw: "Skola", en: "School"}, {sw: "Bok", en: "Book"},
+            {sw: "Vän", en: "Friend"}, {sw: "Hus", en: "House"}, {sw: "Bil", en: "Car"}, {sw: "Väg", en: "Road"},
+            {sw: "Stad", en: "City"}, {sw: "Land", en: "Country"}, {sw: "Vatten", en: "Water"}, {sw: "Eld", en: "Fire"},
+            {sw: "Luft", en: "Air"}, {sw: "Jord", en: "Earth"}, {sw: "Människa", en: "Human"}, {sw: "Barn", en: "Child"},
+            {sw: "Kvinna", en: "Woman"}, {sw: "Man", en: "Man"}, {sw: "Pojke", en: "Boy"}, {sw: "Flicka", en: "Girl"},
+            {sw: "Hund", en: "Dog"}, {sw: "Katt", en: "Cat"}, {sw: "Fågel", en: "Bird"}, {sw: "Häst", en: "Horse"},
+            {sw: "Sol", en: "Sun"}, {sw: "Måne", en: "Moon"}, {sw: "Stjärna", en: "Star"}, {sw: "Himmel", en: "Sky"},
+            {sw: "Dag", en: "Day"}, {sw: "Natt", en: "Night"}, {sw: "Vecka", en: "Week"}, {sw: "Månad", en: "Month"},
+            {sw: "År", en: "Year"}, {sw: "Tid", en: "Time"}, {sw: "Liten", en: "Small"}, {sw: "Stor", en: "Big"},
+            {sw: "Vacker", en: "Beautiful"}, {sw: "Gammal", en: "Old"}, {sw: "Ny", en: "New"}, {sw: "Glad", en: "Happy"},
+            {sw: "Ledsen", en: "Sad"}, {sw: "Snäll", en: "Kind"}, {sw: "Arg", en: "Angry"}, {sw: "Varm", en: "Warm"},
+            {sw: "Kall", en: "Cold"}, {sw: "Söt", en: "Sweet"}, {sw: "Snabb", en: "Fast"}, {sw: "Långsam", en: "Slow"},
+            {sw: "Hela", en: "Whole"}, {sw: "Del", en: "Part"}, {sw: "Samma", en: "Same"}, {sw: "Annan", en: "Other"}
+        ];
+        function nextWord() {
+            const item = vocabulary[Math.floor(Math.random() * vocabulary.length)];
+            document.getElementById('sw').innerText = item.sw;
+            document.getElementById('en').innerText = item.en;
+        }
+        setInterval(nextWord, 10000);
+        nextWord();
+    </script>
+</body>
+</html>
