@@ -1,66 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swedish Word Screensaver</title>
     <style>
-        body { 
-            background-color: #1a1a1a; 
-            color: white; 
-            display: flex; 
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
             flex-direction: column;
-            justify-content: flex-end; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
-            padding-bottom: 120px;
-            font-family: 'Helvetica Neue', Helvetica, sans-serif;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             overflow: hidden;
         }
-        .container { text-align: center; background: rgba(0,0,0,0.7); padding: 40px; width: 100%; border-top: 1px solid #444; }
-        .swedish { font-size: 100px; font-weight: bold; color: #f1c40f; margin: 0; }
-        .english { font-size: 50px; color: #bdc3c7; margin-top: 15px; font-style: italic; }
+        #swedish { 
+            font-size: 8vw; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            text-align: center;
+        }
+        #english { 
+            font-size: 4vw; 
+            color: #888; 
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div id="sw" class="swedish">Hej!</div>
-        <div id="en" class="english">Hello!</div>
-    </div>
+    <div id="swedish">Laddar...</div>
+    <div id="english">Loading...</div>
+
     <script>
-        const vocabulary = [
-            {sw: "Och", en: "And"}, {sw: "I", en: "In"}, {sw: "En", en: "A/An"}, {sw: "Ett", en: "A/An (neuter)"},
-            {sw: "Som", en: "As/Like"}, {sw: "Att", en: "To"}, {sw: "För", en: "For"}, {sw: "På", en: "On"},
-            {sw: "Med", en: "With"}, {sw: "Han", en: "He"}, {sw: "Hon", en: "She"}, {sw: "Det", en: "It"},
-            {sw: "Vi", en: "We"}, {sw: "De", en: "They"}, {sw: "Var", en: "Was/Where"}, {sw: "Men", en: "But"},
-            {sw: "Här", en: "Here"}, {sw: "Där", en: "There"}, {sw: "Från", en: "From"}, {sw: "Till", en: "To"},
-            {sw: "Eller", en: "Or"}, {sw: "Om", en: "If/About"}, {sw: "När", en: "When"}, {sw: "Upp", en: "Up"},
-            {sw: "Ut", en: "Out"}, {sw: "In", en: "In"}, {sw: "Nu", en: "Now"}, {sw: "Bara", en: "Only"},
-            {sw: "Mycket", en: "Much/Very"}, {sw: "Bra", en: "Good"}, {sw: "Dålig", en: "Bad"}, {sw: "Gå", en: "Go"},
-            {sw: "Se", en: "See"}, {sw: "Säga", en: "Say"}, {sw: "Göra", en: "Do"}, {sw: "Få", en: "Get"},
-            {sw: "Komma", en: "Come"}, {sw: "Veta", en: "Know"}, {sw: "Tro", en: "Believe"}, {sw: "Tänka", en: "Think"},
-            {sw: "Hitta", en: "Find"}, {sw: "Ta", en: "Take"}, {sw: "Ge", en: "Give"}, {sw: "Visa", en: "Show"},
-            {sw: "Äta", en: "Eat"}, {sw: "Dricka", en: "Drink"}, {sw: "Sova", en: "Sleep"}, {sw: "Arbeta", en: "Work"},
-            {sw: "Skriva", en: "Write"}, {sw: "Läsa", en: "Read"}, {sw: "Skola", en: "School"}, {sw: "Bok", en: "Book"},
-            {sw: "Vän", en: "Friend"}, {sw: "Hus", en: "House"}, {sw: "Bil", en: "Car"}, {sw: "Väg", en: "Road"},
-            {sw: "Stad", en: "City"}, {sw: "Land", en: "Country"}, {sw: "Vatten", en: "Water"}, {sw: "Eld", en: "Fire"},
-            {sw: "Luft", en: "Air"}, {sw: "Jord", en: "Earth"}, {sw: "Människa", en: "Human"}, {sw: "Barn", en: "Child"},
-            {sw: "Kvinna", en: "Woman"}, {sw: "Man", en: "Man"}, {sw: "Pojke", en: "Boy"}, {sw: "Flicka", en: "Girl"},
-            {sw: "Hund", en: "Dog"}, {sw: "Katt", en: "Cat"}, {sw: "Fågel", en: "Bird"}, {sw: "Häst", en: "Horse"},
-            {sw: "Sol", en: "Sun"}, {sw: "Måne", en: "Moon"}, {sw: "Stjärna", en: "Star"}, {sw: "Himmel", en: "Sky"},
-            {sw: "Dag", en: "Day"}, {sw: "Natt", en: "Night"}, {sw: "Vecka", en: "Week"}, {sw: "Månad", en: "Month"},
-            {sw: "År", en: "Year"}, {sw: "Tid", en: "Time"}, {sw: "Liten", en: "Small"}, {sw: "Stor", en: "Big"},
-            {sw: "Vacker", en: "Beautiful"}, {sw: "Gammal", en: "Old"}, {sw: "Ny", en: "New"}, {sw: "Glad", en: "Happy"},
-            {sw: "Ledsen", en: "Sad"}, {sw: "Snäll", en: "Kind"}, {sw: "Arg", en: "Angry"}, {sw: "Varm", en: "Warm"},
-            {sw: "Kall", en: "Cold"}, {sw: "Söt", en: "Sweet"}, {sw: "Snabb", en: "Fast"}, {sw: "Långsam", en: "Slow"},
-            {sw: "Hela", en: "Whole"}, {sw: "Del", en: "Part"}, {sw: "Samma", en: "Same"}, {sw: "Annan", en: "Other"}
+        const words = [
+            {s: "jag", e: "I"}, {s: "du", e: "you"}, {s: "han", e: "he"}, {s: "hon", e: "she"}, {s: "den", e: "it (common)"}, {s: "det", e: "it (neuter)"}, {s: "vi", e: "we"}, {s: "ni", e: "you (plural)"}, {s: "de", e: "they"}, {s: "mig", e: "me"},
+            {s: "dig", e: "you (obj)"}, {s: "honom", e: "him"}, {s: "henne", e: "her"}, {s: "oss", e: "us"}, {s: "dem", e: "them"}, {s: "min", e: "my"}, {s: "din", e: "your"}, {s: "hans", e: "his"}, {s: "hennes", e: "her"}, {s: "vår", e: "our"},
+            {s: "er", e: "your (plural)"}, {s: "deras", e: "their"}, {s: "och", e: "and"}, {s: "eller", e: "or"}, {s: "men", e: "but"}, {s: "för", e: "for"}, {s: "att", e: "to / that"}, {s: "som", e: "who/that/which"}, {s: "när", e: "when"}, {s: "om", e: "if/about"},
+            {s: "eftersom", e: "because"}, {s: "därför", e: "therefore"}, {s: "också", e: "also"}, {s: "bara", e: "only"}, {s: "inte", e: "not"}, {s: "alltid", e: "always"}, {s: "ofta", e: "often"}, {s: "ibland", e: "sometimes"}, {s: "aldrig", e: "never"}, {s: "nu", e: "now"},
+            {s: "här", e: "here"}, {s: "där", e: "there"}, {s: "hemma", e: "at home"}, {s: "bort", e: "away"}, {s: "upp", e: "up"}, {s: "ner", e: "down"}, {s: "in", e: "in"}, {s: "ut", e: "out"}, {s: "igen", e: "again"}, {s: "vara", e: "be"},
+            {s: "ha", e: "have"}, {s: "göra", e: "do / make"}, {s: "säga", e: "say"}, {s: "gå", e: "go"}, {s: "komma", e: "come"}, {s: "se", e: "see"}, {s: "ge", e: "give"}, {s: "ta", e: "take"}, {s: "få", e: "get"}, {s: "vilja", e: "want"},
+            {s: "kunna", e: "can"}, {s: "måste", e: "must"}, {s: "bör", e: "should"}, {s: "veta", e: "know"}, {s: "tro", e: "believe"}, {s: "tänka", e: "think"}, {s: "känna", e: "feel"}, {s: "arbeta", e: "work"}, {s: "leva", e: "live"}, {s: "spela", e: "play"},
+            {s: "äta", e: "eat"}, {s: "dricka", e: "drink"}, {s: "sova", e: "sleep"}, {s: "läsa", e: "read"}, {s: "skriva", e: "write"}, {s: "prata", e: "talk"}, {s: "lyssna", e: "listen"}, {s: "höra", e: "hear"}, {s: "resa", e: "travel"}, {s: "stanna", e: "stay"},
+            {s: "börja", e: "begin"}, {s: "sluta", e: "stop"}, {s: "hjälpa", e: "help"}, {s: "fråga", e: "ask"}, {s: "svara", e: "answer"}, {s: "hitta", e: "find"}, {s: "förlora", e: "lose"}, {s: "vinna", e: "win"}, {s: "köpa", e: "buy"}, {s: "sälja", e: "sell"},
+            {s: "betala", e: "pay"}, {s: "öppna", e: "open"}, {s: "stänga", e: "close"}, {s: "springa", e: "run"}, {s: "köra", e: "drive"}, {s: "flyga", e: "fly"}, {s: "studera", e: "study"}, {s: "lära", e: "learn"}, {s: "man", e: "man"}, {s: "kvinna", e: "woman"},
+            {s: "barn", e: "child"}, {s: "vän", e: "friend"}, {s: "familj", e: "family"}, {s: "mamma", e: "mother"}, {s: "pappa", e: "father"}, {s: "syster", e: "sister"}, {s: "bror", e: "brother"}, {s: "hus", e: "house"}, {s: "hem", e: "home"}, {s: "rum", e: "room"},
+            {s: "dörr", e: "door"}, {s: "fönster", e: "window"}, {s: "bord", e: "table"}, {s: "stol", e: "chair"}, {s: "säng", e: "bed"}, {s: "kök", e: "kitchen"}, {s: "badrum", e: "bathroom"}, {s: "stad", e: "city"}, {s: "land", e: "country"}, {s: "värld", e: "world"},
+            {s: "skola", e: "school"}, {s: "universitet", e: "university"}, {s: "arbete", e: "work"}, {s: "jobb", e: "job"}, {s: "pengar", e: "money"}, {s: "tid", e: "time"}, {s: "dag", e: "day"}, {s: "natt", e: "night"}, {s: "morgon", e: "morning"}, {s: "kväll", e: "evening"},
+            {s: "vecka", e: "week"}, {s: "år", e: "year"}, {s: "liv", e: "life"}, {s: "problem", e: "problem"}, {s: "hjälp", e: "help"}, {s: "kärlek", e: "love"}, {s: "stor", e: "big"}, {s: "liten", e: "small"}, {s: "lång", e: "long"}, {s: "kort", e: "short"},
+            {s: "ny", e: "new"}, {s: "gammal", e: "old"}, {s: "ung", e: "young"}, {s: "bra", e: "good"}, {s: "dålig", e: "bad"}, {s: "lätt", e: "easy"}, {s: "svår", e: "difficult"}, {s: "snabb", e: "fast"}, {s: "långsam", e: "slow"}, {s: "varm", e: "warm"},
+            {s: "kall", e: "cold"}, {s: "glad", e: "happy"}, {s: "ledsen", e: "sad"}, {s: "arg", e: "angry"}, {s: "trött", e: "tired"}, {s: "pigg", e: "energetic"}, {s: "sjuk", e: "sick"}, {s: "frisk", e: "healthy"}, {s: "rik", e: "rich"}, {s: "fattig", e: "poor"},
+            {s: "viktig", e: "important"}, {s: "enkel", e: "simple"}, {s: "vacker", e: "beautiful"}, {s: "stark", e: "strong"}, {s: "svag", e: "weak"}, {s: "rätt", e: "right"}, {s: "fel", e: "wrong"}, {s: "säker", e: "safe / sure"}, {s: "tidig", e: "early"}, {s: "sen", e: "late"},
+            {s: "en", e: "a / one"}, {s: "ett", e: "a / one"}, {s: "många", e: "many"}, {s: "mycket", e: "much"}, {s: "lite", e: "little"}, {s: "mer", e: "more"}, {s: "mest", e: "most"}, {s: "alla", e: "all"}, {s: "varje", e: "each"}, {s: "ingen", e: "no one"},
+            {s: "i", e: "in"}, {s: "på", e: "on"}, {s: "till", e: "to"}, {s: "från", e: "from"}, {s: "med", e: "with"}, {s: "utan", e: "without"}, {s: "över", e: "over"}, {s: "under", e: "under"}, {s: "före", e: "before"}, {s: "efter", e: "after"},
+            {s: "mellan", e: "between"}, {s: "genom", e: "through"}, {s: "mot", e: "toward"}, {s: "runt", e: "around"}, {s: "vid", e: "by"}, {s: "bakom", e: "behind"}, {s: "framför", e: "in front of"}, {s: "ja", e: "yes"}, {s: "nej", e: "no"}, {s: "tack", e: "thank you"},
+            {s: "hej", e: "hello"}, {s: "adjö", e: "goodbye"}, {s: "förlåt", e: "sorry"}, {s: "snälla", e: "please"}, {s: "välkommen", e: "welcome"}, {s: "mat", e: "food"}, {s: "vatten", e: "water"}, {s: "kaffe", e: "coffee"}, {s: "te", e: "tea"}, {s: "mjölk", e: "milk"},
+            {s: "bröd", e: "bread"}, {s: "ost", e: "cheese"}, {s: "kött", e: "meat"}, {s: "fisk", e: "fish"}, {s: "frukt", e: "fruit"}, {s: "ris", e: "rice"}, {s: "pasta", e: "pasta"}, {s: "bil", e: "car"}, {s: "buss", e: "bus"}, {s: "tåg", e: "train"},
+            {s: "cykel", e: "bicycle"}, {s: "flyg", e: "airplane"}, {s: "väg", e: "road"}, {s: "telefon", e: "phone"}, {s: "dator", e: "computer"}, {s: "internet", e: "internet"}, {s: "bok", e: "book"}, {s: "musik", e: "music"}, {s: "film", e: "movie"}, {s: "färg", e: "color"},
+            {s: "röd", e: "red"}, {s: "blå", e: "blue"}, {s: "grön", e: "green"}, {s: "gul", e: "yellow"}, {s: "svart", e: "black"}, {s: "vit", e: "white"}, {s: "kropp", e: "body"}, {s: "huvud", e: "head"}, {s: "hand", e: "hand"}, {s: "ben", e: "leg"},
+            {s: "fot", e: "foot"}, {s: "öga", e: "eye"}, {s: "öra", e: "ear"}, {s: "mun", e: "mouth"}, {s: "näsa", e: "nose"}, {s: "sol", e: "sun"}, {s: "regn", e: "rain"}, {s: "snö", e: "snow"}, {s: "vind", e: "wind"}, {s: "moln", e: "cloud"},
+            {s: "varmt", e: "warm"}, {s: "kallt", e: "cold"}, {s: "torrt", e: "dry"}, {s: "blött", e: "wet"}, {s: "spel", e: "game"}, {s: "sport", e: "sport"}, {s: "fotboll", e: "football"}, {s: "konst", e: "art"}, {s: "teater", e: "theater"}, {s: "dans", e: "dance"},
+            {s: "fest", e: "party"}, {s: "hobby", e: "hobby"}, {s: "polis", e: "police"}, {s: "läkare", e: "doctor"}, {s: "lärare", e: "teacher"}, {s: "student", e: "student"}, {s: "elev", e: "pupil"}, {s: "chef", e: "boss"}, {s: "kollega", e: "colleague"}, {s: "kund", e: "customer"},
+            {s: "granne", e: "neighbor"}, {s: "lag", e: "team/law"}, {s: "regel", e: "rule"}, {s: "domstol", e: "court"}, {s: "dom", e: "judgment"}, {s: "straff", e: "punishment"}, {s: "frihet", e: "freedom"}, {s: "ansvar", e: "responsibility"}, {s: "makt", e: "power"}, {s: "kontroll", e: "control"},
+            {s: "idé", e: "idea"}, {s: "plan", e: "plan"}, {s: "mål", e: "goal"}, {s: "dröm", e: "dream"}, {s: "hopp", e: "hope"}, {s: "rädsla", e: "fear"}, {s: "glädje", e: "joy"}, {s: "sorg", e: "sorrow"}, {s: "stress", e: "stress"}, {s: "lugn", e: "calm"},
+            {s: "början", e: "beginning"}, {s: "slut", e: "end"}, {s: "del", e: "part"}, {s: "helhet", e: "whole"}, {s: "exempel", e: "example"}, {s: "fakta", e: "fact"}, {s: "sanning", e: "truth"}, {s: "lögn", e: "lie"}, {s: "chans", e: "chance"}, {s: "risk", e: "risk"},
+            {s: "språk", e: "language"}, {s: "ord", e: "word"}, {s: "mening", e: "sentence"}, {s: "text", e: "text"}, {s: "röst", e: "voice"}, {s: "ljud", e: "sound"}, {s: "ton", e: "tone"}, {s: "accent", e: "accent"}, {s: "dialekt", e: "dialect"}, {s: "uttal", e: "pronunciation"},
+            {s: "natur", e: "nature"}, {s: "skog", e: "forest"}, {s: "sjö", e: "lake"}, {s: "hav", e: "sea"}, {s: "berg", e: "mountain"}, {s: "strand", e: "beach"}, {s: "djur", e: "animal"}, {s: "växt", e: "plant"}, {s: "blomma", e: "flower"}, {s: "träd", e: "tree"},
+            {s: "helg", e: "weekend"}, {s: "vardag", e: "weekday"}, {s: "semester", e: "vacation"}, {s: "paus", e: "break"}, {s: "rast", e: "recess"}, {s: "pris", e: "price"}, {s: "värde", e: "value"}, {s: "kostnad", e: "cost"}, {s: "lön", e: "salary"}, {s: "skatt", e: "tax"},
+            {s: "ekonomi", e: "economy"}, {s: "bank", e: "bank"}, {s: "konto", e: "account"}, {s: "kort", e: "card"}, {s: "kontant", e: "cash"}, {s: "lösning", e: "solution"}, {s: "beslut", e: "decision"}, {s: "val", e: "choice"}, {s: "möjlighet", e: "possibility"}, {s: "resultat", e: "result"},
+            {s: "framgång", e: "success"}, {s: "misslyckande", e: "failure"}, {s: "trygg", e: "safe"}, {s: "farlig", e: "dangerous"}, {s: "smart", e: "smart"}, {s: "dum", e: "stupid"}, {s: "snäll", e: "kind"}, {s: "elak", e: "mean"}, {s: "ärlig", e: "honest"}, {s: "falsk", e: "false"},
+            {s: "tyst", e: "quiet"}, {s: "högljudd", e: "loud"}, {s: "nära", e: "near"}, {s: "långt", e: "far"}, {s: "snabbt", e: "fast"}, {s: "långsamt", e: "slowly"}, {s: "tidigt", e: "early"}, {s: "sent", e: "late"}, {s: "sällan", e: "rarely"}, {s: "start", e: "start"},
+            {s: "stopp", e: "stop"}, {s: "riktning", e: "direction"}, {s: "plats", e: "place"}, {s: "område", e: "area"}, {s: "centrum", e: "center"}, {s: "kant", e: "edge"}, {s: "stöd", e: "support"}, {s: "råd", e: "advice"}, {s: "tips", e: "tip"}, {s: "lycka", e: "happiness"},
+            {s: "fred", e: "peace"}, {s: "krig", e: "war"}, {s: "trygghet", e: "safety"}, {s: "framtid", e: "future"}, {s: "historia", e: "history"}, {s: "nutid", e: "present"}, {s: "dåtid", e: "past"}, {s: "evighet", e: "eternity"}, {s: "använda", e: "use"}, {s: "bygga", e: "build"},
+            {s: "skapa", e: "create"}, {s: "ändra", e: "change"}, {s: "förbättra", e: "improve"}, {s: "förstöra", e: "destroy"}, {s: "spara", e: "save"}, {s: "slösa", e: "waste"}, {s: "växa", e: "grow"}, {s: "minska", e: "decrease"}, {s: "förstå", e: "understand"}, {s: "förklara", e: "explain"},
+            {s: "beskriva", e: "describe"}, {s: "visa", e: "show"}, {s: "minnas", e: "remember"}, {s: "glömma", e: "forget"}, {s: "välja", e: "choose"}, {s: "bestämma", e: "decide"}, {s: "behöva", e: "need"}, {s: "önska", e: "wish"}, {s: "hoppas", e: "hope"}, {s: "tvivla", e: "doubt"},
+            {s: "försöka", e: "try"}, {s: "lyckas", e: "succeed"}, {s: "fortsätta", e: "continue"}, {s: "avsluta", e: "finish"}, {s: "samhälle", e: "society"}, {s: "kultur", e: "culture"}, {s: "tradition", e: "tradition"}, {s: "religion", e: "religion"}, {s: "politik", e: "politics"}, {s: "rättighet", e: "right"},
+            {s: "skyldighet", e: "duty"}, {s: "förändring", e: "change"}, {s: "utveckling", e: "development"}, {s: "teknik", e: "technology"}, {s: "vetenskap", e: "science"}, {s: "kunskap", e: "knowledge"}, {s: "utbildning", e: "education"}, {s: "erfarenhet", e: "experience"}, {s: "visdom", e: "wisdom"}, {s: "människa", e: "human"},
+            {s: "fråga", e: "question"}, {s: "svar", e: "answer"}, {s: "hjälp", e: "help"}, {s: "stödja", e: "support"}, {s: "påverka", e: "influence"}, {s: "skydda", e: "protect"}, {s: "hot", e: "threat"}, {s: "säkerhet", e: "security"}, {s: "riskera", e: "risk"}, {s: "vinna", e: "win"},
+            {s: "förlora", e: "lose"}, {s: "delta", e: "participate"}, {s: "skapa", e: "create"}, {s: "leda", e: "lead"}, {s: "följa", e: "follow"}, {s: "möta", e: "meet"}, {s: "undvika", e: "avoid"}, {s: "acceptera", e: "accept"}, {s: "neka", e: "refuse"}, {s: "lova", e: "promise"},
+            {s: "bryta", e: "break"}, {s: "bygga", e: "build"}, {s: "riva", e: "demolish"}, {s: "bära", e: "carry"}, {s: "kasta", e: "throw"}, {s: "fånga", e: "catch"}, {s: "slå", e: "hit"}, {s: "dra", e: "pull"}, {s: "trycka", e: "push"}, {s: "lyfta", e: "lift"},
+            {s: "öppning", e: "opening"}, {s: "stängning", e: "closing"}, {s: "början", e: "beginning"}, {s: "fortsättning", e: "continuation"}, {s: "slutpunkt", e: "endpoint"}, {s: "helhet", e: "entirety"}, {s: "sammanhang", e: "context"}, {s: "ordning", e: "order"}, {s: "kaos", e: "chaos"}, {s: "balans", e: "balance"},
+            {s: "känsla", e: "feeling"}, {s: "tanke", e: "thought"}, {s: "åsikt", e: "opinion"}, {s: "beslut", e: "decision"}, {s: "handling", e: "action"}, {s: "beteende", e: "behavior"}, {s: "vana", e: "habit"}, {s: "förändra", e: "change"}, {s: "utveckla", e: "develop"}, {s: "förbättring", e: "improvement"},
+            {s: "styrka", e: "strength"}, {s: "svaghet", e: "weakness"}, {s: "möjlighet", e: "opportunity"}, {s: "begränsning", e: "limitation"}, {s: "fri", e: "free"}, {s: "bunden", e: "bound"}, {s: "öppen", e: "open"}, {s: "stängd", e: "closed"}, {s: "redo", e: "ready"}, {s: "klar", e: "finished"},
+            {s: "ansvarig", e: "responsible"}, {s: "nödvändig", e: "necessary"}, {s: "onödig", e: "unnecessary"}, {s: "möjlig", e: "possible"}, {s: "omöjlig", e: "impossible"}, {s: "vanlig", e: "common"}, {s: "ovanlig", e: "unusual"}, {s: "offentlig", e: "public"}, {s: "privat", e: "private"}, {s: "hemlig", e: "secret"},
+            {s: "framtida", e: "future"}, {s: "nuvarande", e: "current"}, {s: "tidigare", e: "previous"}, {s: "liknande", e: "similar"}, {s: "olika", e: "different"}, {s: "samma", e: "same"}, {s: "särskild", e: "special"}, {s: "viktigaste", e: "most important"}, {s: "tillräcklig", e: "sufficient"}, {s: "mänsklig", e: "human"}
         ];
-        function nextWord() {
-            const item = vocabulary[Math.floor(Math.random() * vocabulary.length)];
-            document.getElementById('sw').innerText = item.sw;
-            document.getElementById('en').innerText = item.en;
+
+        function changeWord() {
+            const word = words[Math.floor(Math.random() * words.length)];
+            document.getElementById('swedish').textContent = word.s;
+            document.getElementById('english').textContent = word.e;
         }
-        setInterval(nextWord, 10000);
-        nextWord();
+
+        // Initialize first word
+        changeWord();
+        
+        // Change word every 10 seconds (10000 ms)
+        setInterval(changeWord, 10000);
     </script>
 </body>
 </html>
